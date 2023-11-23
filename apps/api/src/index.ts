@@ -11,6 +11,9 @@ export const createServer = () => {
     .use(urlencoded({ extended: true }))
     .use(json())
     .use(cors())
+    .get('/', (req, res) => {
+      return res.send('heloo world');
+    })
     .get('/hello/:name', (req, res) => {
       return res.json({ message: `hello ${req.params.name}` });
     })
@@ -21,7 +24,7 @@ export const createServer = () => {
   return app;
 };
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 8080;
 const server = createServer();
 
 server.listen(port, () => {
